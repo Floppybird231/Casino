@@ -1,0 +1,39 @@
+from tkinter import *
+from random import randint
+
+nombre=randint(0,100)
+
+def valide(n):
+    if n<nombre:
+        return -1
+    elif n>nombre:
+        return 1
+    else:
+        return 0
+
+fenetre=Tk()
+fenetre.title("Casino")
+fenetre.geometry("400x200")
+
+l1=Label(fenetre,text="Devine le nombre",font=("sans-serif",10),fg="pink",bg="black")
+b=Button(fenetre,text="Essayer",fg="pink",bg="black")
+e=Entry(fenetre,fg="pink",bg="black")
+
+def action_clic(event):
+    essai=int(s.get())
+def affichage():
+    if essai==n:
+        l1.config("Gagner")
+    if essai>n:
+        l1.config("Trop grand")
+    if essai<n:
+        l1.config("Trop petit")
+
+
+l1.grid(row=0,column=0)
+b.grid(row=0,column=1,rowspan=2)
+e.grid(row=0,column=2,rowspan=3)
+s=Entry(fenetre)
+b.bind("<Button-1>",action_clic)
+
+fenetre.mainloop()
